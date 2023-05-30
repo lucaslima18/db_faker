@@ -1,0 +1,43 @@
+{
+    "schema_used": "maconha",
+    "tables": [
+        {
+            "name": "usuario_drogado",
+            "data_count": 500,
+            "data_model": {
+                "profissao": "job",
+                "salario": "price"
+            }
+        },
+        {
+            "name": "senai_endereco_funcionario",
+            "data_count": 500,
+            "data_model": {
+                "nome": "name",
+                "pais": "country",
+                "cidade": "city",
+                "endereco": "address",
+                "rua": "street_address", 
+                "nome_da_rua": "street_name"
+            }
+        },
+        {
+            "name": "senai_fardamento_funcionario",
+            "data_count": 500,
+            "data_model": {
+                "setor": "job",
+                "cor_da_farda": "color"
+            }
+        },
+        {
+            "name": "senai_dados_login_usuario",
+            "data_count": 500,
+            "data_model": {
+                "nome_de_usuario": "name",
+                "senha": "password",
+                "cpf": "cpf",
+                "email": "email"
+            }
+        }
+    ]
+}

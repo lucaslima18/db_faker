@@ -1,0 +1,34 @@
+{
+    "schema_used": "test",
+    "tables": [
+        {
+            "name": "cajed",
+            "data_count": 10000,
+            "data_model": {
+                "profissao": "int",
+                "movimentacao": "str",
+                "periodo": "str",
+                "municipio": "municipio",
+                "cbo": "str",
+                "cnae_classe": "str",
+                "cnae_subclasse": "str",
+                "porte": "str",
+                "grau_instrucao": "str",
+                "horas_contratuais": "time",
+                "idade": "int",
+                "aprendiz": "str",
+                "portador_deficiencia": "str",
+                "raca_cor": "str",
+                "salario_mensal": "str",
+                "saldo": "float",
+                "tempo_emprego_meses": "int",
+                "tipo_estabelecimento": "str",
+                "tipo_deficiencia": "str",
+                "tipo_movimentacao": "str",
+                "id_uf": "int",
+                "dsc_uf": "estado",
+                "dt_carga": "date_time"
+            }
+        }
+    ]
+}
