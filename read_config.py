@@ -8,11 +8,12 @@ class TableMountInfo(BaseModel):
     data_count: int
     data_model: Dict[str, Any]
 
-
-class DatabaseMountInfo(BaseModel):
+class SchemaMountInfo(BaseModel):
     schema_used: str
     tables: List[TableMountInfo]
 
+class DatabaseMountInfo(BaseModel):
+    schemas: List[SchemaMountInfo]
 
 class Config(BaseModel):
     config: DatabaseMountInfo

@@ -1,17 +1,68 @@
 {
-    "schema_used": "caravel_schema_example",
-    "tables": [
+    "schemas": [
         {
-            "name": "caravel_table_example",
-            "data_count": 10000,
-            "data_model": {
-                "profissao": "job",
-                "salario": "price",
-                "cidade": "city",
-                "email": "email",
-                "pais": "country",
-                "cep": "cep"
-            }
+            "schema_used": "st",
+            "tables": [
+                {
+                    "name": "receita_federal_mei",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj_basico": "char_test",
+                        "opcao_pelo_simples": "char_test",
+                        "dt_opcao_pelo_simples": "char_test",
+                        "dt_exclusao_simples": "char_test",
+                        "opcao_pelo_mei": "code",
+                        "dt_opcao_pelo_mei": "char_test",
+                        "dt_exclusao_mei": "char_test",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_paises",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "int",
+                        "pais": "country",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_situacao_cadastral",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "int",
+                        "descricao": "str",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_socios",
+                    "data_count": 10000,
+                    "data_model": {
+                        "dt_carga": "date_time",
+                        "identificador_de_socio": "code",
+                        "nome_socio": "name",
+                        "cnpj_cpf_do_socio": "cnpj",
+                        "data_entrada_sociedade": "date_time",
+                        "cnpj_basico": "cnpj",
+                        "codigo_qualificacao_do_socio": "code",
+                        "pais": "country",
+                        "representante_legal": "name",
+                        "nome_representante": "name",
+                        "codigo_qualificacao_do_representante": "code",
+                        "faixa_etaria": "str"
+                    }
+                },
+                {
+                    "name": "qualificacao_socio_1",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "int",
+                        "descricao": "str",
+                        "dt_carga": "date_time"
+                    }
+                }
+            ]
         }
-    ]
+    ]   
 }

@@ -1,0 +1,216 @@
+{
+    "schemas": [
+        {
+            "schema_used": "fontes_externas",
+            "tables": [
+                {
+                    "name": "gov_cnpjempresas",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj_basico": "estado_sigla",
+                        "razao_social": "name",
+                        "natureza_juridica": "str",
+                        "qualificacao_responsavel": "str",
+                        "capital_social": "int", 
+                        "porte": "price",
+                        "ente_federativo": "estado", 
+                        "uf": "estado_sigla",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj": "cnpj",
+                        "identificador_matriz_filial": "name",
+                        "razao_social": "name",
+                        "nome_fantasia": "company",
+                        "situacao_cadastral": "price", 
+                        "data_situacao_cadastral": "date_time",
+                        "motivo_situacao_cadastral": "estado", 
+                        "codigo_natureza_juridica": "estado_sigla",
+                        "data_inicio_atividade": "date_time",
+                        "descricao_tipo_logradouro": "str",
+                        "logradouro": "street_address",
+                        "numero": "year",
+                        "complemento": "str",
+                        "bairro": "street_name",
+                        "cep": "cep",
+                        "uf": "estado_sigla",
+                        "codigo_municipio": "country_code",
+                        "municipio": "municipio",
+                        "ddd_telefone_1": "phone",
+                        "ddd_telefone_2": "phone",
+                        "ddd_fax": "code",
+                        "capital_social": "int",
+                        "porte": "int",
+                        "opcao_pelo_simples": "int",
+                        "data_opcao_pelo_simples": "date_time",
+                        "data_exclusao_do_simples": "date_time",
+                        "opcao_pelo_mei": "str",
+                        "situacao_especial": "str",
+                        "data_situacao_especial": "date_time",
+                        "cnae_fiscal": "code",
+                        "secao": "code",
+                        "divisao": "code",
+                        "grupo": "str",
+                        "classe": "str",
+                        "subclasse": "str",
+                        "natureza_juridica": "str",
+                        "qualificacao_do_responsavel": "int",
+                        "codigo_motivo_situacao_cadastral": "int",
+                        "descricao_qualificacao_responsavel": "str",
+                        "nivel_cnae": "str",
+                        "contribuinte": "str",
+                        "industria": "company",
+                        "dt_carga": "date_time",
+                        "correio_eletronico": "email",
+                        "nm_porte_predito": "int",
+                        "nr_probabilidade_porte_predito": "int",
+                        "codigo_pais": "country_code",
+                        "nome_pais": "country",
+                        "ente_federativo": "str",
+                        "data_opcao_pelo_mei": "date_time",
+                        "situacao_sefaz": "str",
+                        "nr_contato_sefaz": "code",
+                        "nr_inscricao_estadual": "code",
+                        "email_sefaz": "email"
+                    }
+                },
+                {
+                    "name": "receita_federal_cnae_secundaria",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj": "cnpj",
+                        "cnae": "code",
+                        "secao": "code",
+                        "divisao": "code",
+                        "grupo": "str",
+                        "classe": "str",
+                        "subclasse": "str",
+                        "contribuinte": "name",
+                        "industria": "company",
+                        "dt_carga": "date_time",
+                        "nome_fantasia": "company",
+                        "razao_social": "name"
+
+                    }
+                }
+            ]
+        },
+        {
+            "schema_used": "natureza_juridica",
+            "tables": [
+                {
+                    "name": "receita_federal_cnae_secundaria",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "code",
+                        "dt_carga": "date_time",
+                        "descricao": "str"
+                    }
+                },
+                {
+                    "name": "qualificacao_socio",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "code",
+                        "descricao": "str",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_empresas",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj_basico": "cnpj",
+                        "razao_social": "str",
+                        "natureza_juridica": "str",
+                        "qualificacao_responsavel": "str",
+                        "capital_social": "str",
+                        "porte": "str",
+                        "ente_federativo": "str",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_estabelecimento",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj_basico": "cnpj",
+                        "cnpj_ordem": "cnpj",
+                        "cnpj_dv": "cnpj",
+                        "matriz_filial": "company",
+                        "nome_fantasia": "company",
+                        "situacao_cadastral": "str",
+                        "data_situacao_cadastral": "str",
+                        "motivo_situacao_cadastral": "str",
+                        "nome_cidade_exterior": "city",
+                        "pais": "country"
+
+                    }
+                },
+                {
+                    "name": "receita_federal_mei",
+                    "data_count": 10000,
+                    "data_model": {
+                        "cnpj_basico": "cnpj",
+                        "opcao_pelo_simples": "str",
+                        "dt_opcao_pelo_simples": "date_time",
+                        "dt_exclusao_simples": "date_time",
+                        "opcao_pelo_mei": "code",
+                        "dt_opcao_pelo_mei": "date_time",
+                        "dt_exclusao_mei": "date_time",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_paises",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "code",
+                        "pais": "country",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_situacao_cadastral",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "code",
+                        "descricao": "str",
+                        "dt_carga": "date_time"
+                    }
+                },
+                {
+                    "name": "receita_federal_socios",
+                    "data_count": 10000,
+                    "data_model": {
+                        "dt_carga": "date_time",
+                        "identificador_de_socio": "code",
+                        "nome_socio": "name",
+                        "cnpj_cpf_do_socio": "cnpj",
+                        "data_entrada_sociedade": "date_time",
+                        "cnpj_basico": "cnpj",
+                        "codigo_qualificacao_do_socio": "code",
+                        "pais": "country",
+                        "representante_legal": "name",
+                        "nome_representante": "name",
+                        "codigo_qualificacao_do_representante": "code",
+                        "faixa_etaria": "str"
+                    }
+                },
+                {
+                    "name": "qualificacao_socio_1",
+                    "data_count": 10000,
+                    "data_model": {
+                        "codigo": "code",
+                        "descricao": "str",
+                        "dt_carga": "date_time"
+                    }
+                }
+            ]
+        }
+    ]   
+}

@@ -61,7 +61,8 @@ def mount_fake(faker: Faker, fake_term: str) -> Faker:
             ("service_phone_number", faker.service_phone_number()),
             ("phone", faker.phone_number()),
             ("cep", faker.postcode()),
-            ("rg", faker.rg())
+            ("rg", faker.rg()),
+            ("char_test", "ab")
         ]
 
     fake = list(filter(

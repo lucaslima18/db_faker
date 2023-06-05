@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "db-faker"
+version = "0.1.0"
+description = ""
+authors = ["lucaslima"]
+readme = "README.md"
+packages = [{include = "db_faker"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.0.2"
+faker = "^18.9.0"
+sqlalchemy = "^2.0.15"
+pydantic = "^1.10.8"
+python-dotenv = "^1.0.0"
+tqdm = "^4.65.0"
+pyodbc = "^4.0.39"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -14,7 +14,7 @@ class FakeDataGenerator:
     def __init__(
         self,
         config: dict,
-        db_name: str,
+        db_type: str,
         db_host: str,
         db_port: str,
         db_user: str,
@@ -23,7 +23,7 @@ class FakeDataGenerator:
         db_driver: Optional[str] = None
     ) -> None:
         self.config = config
-        self.db_name = db_name
+        self.db_type = db_type
         self.db_host = db_host
         self.db_port = db_port
         self.db_user = db_user
@@ -34,18 +34,23 @@ class FakeDataGenerator:
 
     def __call__(self) -> bool:
         engine = create_engine(self.__mount_connection_string())
-        tables = self.config["config"]["tables"]
+        schemas = self.config["config"]["schemas"]
 
-        for table in tables:
-            print("Mount Table: ", table["name"])
-            data = self.__mount_data(table["data_model"], table["data_count"])
+        for schema in schemas:
+            tables = schema["tables"]
 
-            df = pd.DataFrame.from_dict(data)
-            df.to_sql(
-                table["name"],
-                con=engine,
-                schema=self.config["config"]["schema_used"]
-            )
+            for table in tables:
+                print("Mount Table: ", table["name"])
+                data = self.__mount_data(table["data_model"], table["data_count"])
+
+                df = pd.DataFrame.from_dict(data)
+                df.to_sql(
+                    table["name"],
+                    con=engine,
+                    schema=schema["schema_used"],
+                    if_exists="append",
+                    index=False
+                )
 
     def __mount_data(self, table_info, data_count):
         for table_name in table_info:
@@ -66,11 +71,15 @@ class FakeDataGenerator:
                 "mssql+pyodbc",
                 f"mssql+pyodbc://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_database}?driver={self.db_driver}"
 
+            ),
+            (
+                "postgresql+psycopg2",
+                f"postgresql+psycopg2://{self.db_user}:{self.db_password}@{self.db_host}/{self.db_database}"
             )
         ]
 
         connection_string = list(filter(
-            lambda x: x[0] == self.db_name, db_types
+            lambda x: x[0] == self.db_type, db_types
         ))
 
         # TODO: use customer error here

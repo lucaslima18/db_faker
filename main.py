@@ -8,7 +8,7 @@ env = get_env()
 if __name__ == '__main__':
     FakeDataGenerator(
         config=get_config(),
-        db_name=env.DB_NAME,
+        db_type=env.DB_TYPE,
         db_host=env.DB_HOST,
         db_port=env.DB_PORT,
         db_user=env.DB_USER,
