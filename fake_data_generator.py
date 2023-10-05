@@ -1,8 +1,13 @@
+import sys
+
 from typing import Optional
 import pandas as pd
 from faker import Faker
+
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import sessionmaker
+
 from read_env import get_env
 from mount_fake import mount_fake
 from tqdm import tqdm
@@ -36,6 +41,8 @@ class FakeDataGenerator:
         engine = create_engine(self.__mount_connection_string())
         schemas = self.config["config"]["schemas"]
 
+        Session = sessionmaker(bind=engine)
+
         for schema in schemas:
             tables = schema["tables"]
 
@@ -44,13 +51,25 @@ class FakeDataGenerator:
                 data = self.__mount_data(table["data_model"], table["data_count"])
 
                 df = pd.DataFrame.from_dict(data)
-                df.to_sql(
-                    table["name"],
-                    con=engine,
-                    schema=schema["schema_used"],
-                    if_exists="append",
-                    index=False
-                )
+
+                with Session() as session:
+                    try:
+                        df.to_sql(
+                            table["name"],
+                            con=engine,
+                            schema=schema["schema_used"],
+                            if_exists="append",
+                            index=False
+                        )
+
+                        session.commit()
+
+                    except Exception as err:
+                        print(err, "Ocorreu um erro, vamos dar rowback no banco!")
+                        session.rollback()
+
+                    finally:
+                        session.close()
 
     def __mount_data(self, table_info, data_count):
         for table_name in table_info:
@@ -75,6 +94,10 @@ class FakeDataGenerator:
             (
                 "postgresql+psycopg2",
                 f"postgresql+psycopg2://{self.db_user}:{self.db_password}@{self.db_host}/{self.db_database}"
+            ),
+            (
+                "mysql+pymysql",
+                f'mysql+pymysql://{self.db_user}:{self.db_password}@{self.db_host}/{self.db_database}'
             )
         ]
 

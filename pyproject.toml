@@ -16,6 +16,7 @@ python-dotenv = "^1.0.0"
 tqdm = "^4.65.0"
 pyodbc = "^4.0.39"
 psycopg2-binary = "^2.9.6"
+pymysql = "^1.1.0"
 
 
 [build-system]
